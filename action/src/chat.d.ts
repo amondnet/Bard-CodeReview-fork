@@ -1,6 +1,7 @@
 export declare class Chat {
-    private chatAPI;
+    private apikey;
     constructor(apikey: string);
     private generatePrompt;
-    codeReview: (patch: string) => Promise<string>;
+    codeReview: (patch: string) => Promise<any>;
+    private sendMessage;
 }

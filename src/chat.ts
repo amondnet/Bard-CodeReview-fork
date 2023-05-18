@@ -1,4 +1,6 @@
 // import { ChatGPTAPI } from 'chatgpt';
+const fetch = require('node-fetch').default;
+
 export class Chat {
   // private chatAPI: ChatGPTAPI;
   private apikey: string;
