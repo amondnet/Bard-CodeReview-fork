@@ -2,13 +2,13 @@ import { Context, Probot } from 'probot';
 
 import { Chat } from './chat.js';
 
-const OPENAI_API_KEY = 'OPENAI_API_KEY';
+const BARD_API_KEY = 'BARD_API_KEY';
 const MAX_PATCH_COUNT = 4000;
 
 export const robot = (app: Probot) => {
   const loadChat = async (context: Context) => {
-    if (process.env.OPENAI_API_KEY) {
-      return new Chat(process.env.OPENAI_API_KEY);
+    if (process.env.BARD_API_KEY) {
+      return new Chat(process.env.BARD_API_KEY);
     }
 
     const repo = context.repo();
@@ -19,7 +19,7 @@ export const robot = (app: Probot) => {
         {
           owner: repo.owner,
           repo: repo.repo,
-          name: OPENAI_API_KEY,
+          name: BARD_API_KEY,
         }
       )) as any;
 
@@ -33,7 +33,7 @@ export const robot = (app: Probot) => {
         repo: repo.repo,
         owner: repo.owner,
         issue_number: context.pullRequest().pull_number,
-        body: `Seems you are using me but didn't get OPENAI_API_KEY seted in Variables/Secrets for this repo. you could follow [readme](https://github.com/anc95/ChatGPT-CodeReview) for more information`,
+        body: `Seems you are using me but didn't get BARD_API_KEY seted in Variables/Secrets for this repo. you could follow [readme](https://github.com/anc95/ChatGPT-CodeReview) for more information`,
       });
       return null;
     }

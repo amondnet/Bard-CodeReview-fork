@@ -1,0 +1,23 @@
+name: Code Review
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  test:
+    if: ${{ contains(github.event.*.labels.*.name, 'bard-review') }} # Optional; to run only when a label is attached
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BARD_API_KEY: ${{ secrets.BARD_API_KEY }}
+          # Optional
+          LANGUAGE: Korean
+          BARD_API_ENDPOINT: https://api.bardapi.dev/chat

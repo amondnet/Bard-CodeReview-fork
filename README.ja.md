@@ -17,7 +17,7 @@ Install: [apps/cr-gpt](https://github.com/apps/cr-gpt);
 1. リポジトリのホームページに移動します
 2. `settings` をクリックします
 3. `secrets and variables` メニューの下の `actions` をクリックします
-4. `New repository variable` をクリックしてOpenAI の APIキーの登録を行います。変数名は `OPENAI_API_KEY` にしてください。変数の値にはOpenAIのAPIキーを入力します。 (OpenAIのホームページからAPIキーを取得できます。)
+4. `New repository variable` をクリックしてOpenAI の APIキーの登録を行います。変数名は `BARD_API_KEY` にしてください。変数の値にはOpenAIのAPIキーを入力します。 (OpenAIのホームページからAPIキーを取得できます。)
    <img width="1465" alt="image" src="https://user-images.githubusercontent.com/13167934/218533628-3974b70f-c423-44b0-b096-d1ec2ace85ea.png">
 
 ### Start using
@@ -37,7 +37,7 @@ example:
 
 [actions/chatgpt-codereviewer](https://github.com/marketplace/actions/chatgpt-codereviewer)
 
-1. `OPENAI_API_KEY` を設定する
+1. `BARD_API_KEY` を設定する
 2. 以下の例のように `.github/workflows/cr.yml` を作成する
 
 ```yml
@@ -59,7 +59,7 @@ jobs:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BARD_API_KEY: ${{ secrets.BARD_API_KEY }}
           # Optional
           LANGUAGE: Chinese
           MODEL:
