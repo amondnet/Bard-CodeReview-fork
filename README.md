@@ -17,7 +17,7 @@ Install: [apps/cr-gpt](https://github.com/apps/cr-gpt);
 1. Go to the repo homepage which you want integrate this bot
 2. click `settings`
 3. click `actions` under `secrets and variables`
-4. Change to `Variables` tab, create a new variable `OPENAI_API_KEY` with the value of your open api key (For Github Action integration, set it in secrets)
+4. Change to `Variables` tab, create a new variable `BARD_API_KEY` with the value of your open api key (For Github Action integration, set it in secrets)
    <img width="1465" alt="image" src="https://user-images.githubusercontent.com/13167934/218533628-3974b70f-c423-44b0-b096-d1ec2ace85ea.png">
 
 ### Start using
@@ -35,7 +35,7 @@ example:
 
 [actions/chatgpt-codereviewer](https://github.com/marketplace/actions/chatgpt-codereviewer)
 
-1. add the `OPENAI_API_KEY` to your github actions secrets
+1. add the `BARD_API_KEY` to your github actions secrets
 2. create `.github/workflows/cr.yml` add bellow content
 
 ```yml
@@ -57,7 +57,7 @@ jobs:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BARD_API_KEY: ${{ secrets.BARD_API_KEY }}
           # Optional
           LANGUAGE: Chinese
           OPENAI_API_ENDPOINT: https://api.openai.com/v1

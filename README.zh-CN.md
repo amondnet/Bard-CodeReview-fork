@@ -17,7 +17,7 @@
 1.  转到你要集成此机器人的仓库首页
 2.  点击`settings`
 3.  点击`actions`在下面`secrets and variables`
-4.  切换到`Variables`选项，创建一个新变量`OPENAI_API_KEY`，值为你的open api 的key<img width="1465" alt="image" src="https://user-images.githubusercontent.com/13167934/218533628-3974b70f-c423-44b0-b096-d1ec2ace85ea.png">
+4.  切换到`Variables`选项，创建一个新变量`BARD_API_KEY`，值为你的open api 的key<img width="1465" alt="image" src="https://user-images.githubusercontent.com/13167934/218533628-3974b70f-c423-44b0-b096-d1ec2ace85ea.png">
 
 ### 开始使用
 
@@ -36,7 +36,7 @@
 
 [actions/chatgpt-codereviewer](https://github.com/marketplace/actions/chatgpt-codereviewer)
 
-1.  添加`OPENAI_API_KEY`到你的 github action 密钥
+1.  添加`BARD_API_KEY`到你的 github action 密钥
 2.  创建`.github/workflows/cr.yml`添加以下内容
 
 ```yml
@@ -57,7 +57,7 @@ jobs:
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BARD_API_KEY: ${{ secrets.BARD_API_KEY }}
           LANGUAGE: Chinese
 ```
 
