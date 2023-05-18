@@ -13,6 +13,7 @@ jobs:
     if: ${{ contains(github.event.*.labels.*.name, 'bard-review') }} # Optional; to run only when a label is attached
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
