@@ -1,8 +1,10 @@
-import { ChatGPTAPI } from 'chatgpt';
+// import { ChatGPTAPI } from 'chatgpt';
 export class Chat {
-  private chatAPI: ChatGPTAPI;
-
+  // private chatAPI: ChatGPTAPI;
+  private apikey: string;
   constructor(apikey: string) {
+    this.apikey = apikey;
+    /*
     this.chatAPI = new ChatGPTAPI({
       apiKey: apikey,
       apiBaseUrl: process.env.OPENAI_API_ENDPOINT || 'https://api.openai.com/v1',
@@ -11,7 +13,7 @@ export class Chat {
         temperature: +(process.env.temperature || 0) || 1,
         top_p: +(process.env.top_p || 0) || 1,
       },
-    });
+    });*/
   }
 
   private generatePrompt = (patch: string) => {
@@ -32,9 +34,20 @@ export class Chat {
     console.time('code-review cost');
     const prompt = this.generatePrompt(patch);
 
-    const res = await this.chatAPI.sendMessage(prompt);
+    const res = await this.sendMessage(prompt);
 
     console.timeEnd('code-review cost');
-    return res.text;
+    return res.output;
   };
+
+  private sendMessage = async (prompt: string) => {
+    const request = await fetch("https://api.bardapi.dev/chat", {
+      headers: { Authorization: `Bearer ${this.apikey}` },
+      method: "POST",
+      body: JSON.stringify({ input: prompt }),
+    });
+    const response = await request.json();
+    // console.log(response.output);
+    return response;
+  }
 }
